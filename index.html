@@ -1,0 +1,116 @@
+<head>
+<style>
+.header, .bodysection, .footer, .whole-content {
+
+ display:flex;
+
+}
+
+.whole-content{
+
+ flex-direction: column;
+
+ height:100vh;
+
+}
+
+.bodysection {
+
+ flex-grow:1;
+
+ flex-direction: row;
+
+}
+
+</style>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+
+   crossorigin="anonymous"></script>
+
+  <script>
+
+    $(document).ready(function() { 
+
+ $("#test").click(function(){
+
+ checkAjaxCall();
+
+ });
+
+ 
+
+ function checkAjaxCall(){
+ 
+
+ $.ajax({
+
+ url: 'https://agero-stg.apigee.net/agerodashboardapi/ConfirmUserSubmission',
+
+ headers: {
+
+ 'Authorization':'DkzklDJXqG6qtWkCDey6CBVD7Ag2nyLF', 
+
+ 'Content-Type':'application/json'
+
+ },
+
+ method: 'POST',
+
+ dataType: 'json',
+
+ data: {"CallBackNo":"925-262-9686","ProgramCode":"ARA"},
+
+ success: function(data){
+
+ console.log('succes: '+data);
+
+ alert("Success")
+
+ },
+
+ error:function(data){
+
+ console.log('Error: '+data);
+
+ alert("Error"+data.error);
+
+ }
+
+ });
+ 
+
+} 
+
+ }); 
+
+  </script>
+
+</head>
+
+<body>
+
+ <div class="whole-content">
+
+ <div class="header">
+
+ <h1>Test</h1>
+
+ </div>
+
+ <div class="bodysection">
+
+ <button id="test">Check Ajax Call CORS</button>
+
+ </div>
+
+ <div class="footer">
+
+ <button id="test">footer</button>
+
+ </div>
+
+ </div>
+
+</body>
